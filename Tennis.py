@@ -10,26 +10,31 @@ flag = 0
 def open_csv_file():
    file_path = filedialog.askopenfilename(defaultextension=".csv", filetypes=[("CSV Files", "*.csv")])
    df = pd.read_csv(file_path)
-   df_list = df["tourney_name"].drop_duplicates().tolist()
+   df_list = df["winner_name"].drop_duplicates().tolist()
+   sorted_list = sorted(df_list)
    dropdown = ttk.Combobox(
    state="readonly",
    )
-   dropdown["values"] = df_list #Tournament names
+   dropdown["values"] = sorted_list #Tournament names
    dropdown.place(x=50, y=50)
 
-   return df
+   printButton = tk.Button(root, text = "OK",command=())
+   printButton.place(x=250,y=50)
+
+   
+
+   return df,dropdown
 
 
+  
  
 
 # Create a Tkinter window
 root = tk.Tk()
 root.geometry("720x400")
 root.title("Opening a .csv file using button")
-# Create a button to open the .csv file
-open_button = tk.Button(root, text="Open .csv File", command=open_csv_file)
-open_button.pack()
 
+df,dropdown = open_csv_file()
 
 
 
@@ -39,4 +44,6 @@ open_button.pack()
 
 
 # Start the Tkinter main loop to run the GUI application
+lbl = tk.Label(root, text = "") 
+lbl.pack() 
 root.mainloop() 
