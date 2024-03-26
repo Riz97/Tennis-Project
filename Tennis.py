@@ -18,12 +18,16 @@ def open_csv_file():
    dropdown["values"] = sorted_list #Tournament names
    dropdown.place(x=50, y=50)
 
-   printButton = tk.Button(root, text = "OK",command=())
-   printButton.place(x=250,y=50)
-
-   
+   printButton = tk.Button(root, text = "Select the player",command=printInput)
+   printButton.place(x=200,y=50)  
 
    return df,dropdown
+
+def printInput():
+   inp = dropdown.get()
+   print(inp)
+   tree= ttk.Treeview(root,columns=4)
+   tree.pack()
 
 
   
@@ -32,7 +36,8 @@ def open_csv_file():
 # Create a Tkinter window
 root = tk.Tk()
 root.geometry("720x400")
-root.title("Opening a .csv file using button")
+root.title("Tennis Players Statistics")
+
 
 df,dropdown = open_csv_file()
 
@@ -44,6 +49,4 @@ df,dropdown = open_csv_file()
 
 
 # Start the Tkinter main loop to run the GUI application
-lbl = tk.Label(root, text = "") 
-lbl.pack() 
 root.mainloop() 
