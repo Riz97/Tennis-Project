@@ -20,17 +20,19 @@ def open_csv_file():
 
    printButton = tk.Button(root, text = "Select the player",command=printInput)
    printButton.place(x=200,y=50)  
+   
 
    return df,dropdown
 
 def printInput():
    inp = dropdown.get()
-   print(inp)
    tree= ttk.Treeview(root,columns=4)
+   tree.place(x=400,y=700)
    tree.pack()
+   
 
 
-  
+
  
 
 # Create a Tkinter window
